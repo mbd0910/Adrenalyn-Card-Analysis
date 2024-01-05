@@ -10,6 +10,8 @@ object CardGenerator {
     ???
   }
 
+  def randomCardId(): Card.Id = randomCardIdOfType(randomCardType())
+
   def randomCardType(): CardType = {
     randomCardType(random.nextDouble(), CardTypeProbability.cumulativeProbabilities)
   }
@@ -18,5 +20,11 @@ object CardGenerator {
     cumulativeProbabilities.filter { case (_, cumulativeProbability) => cumulativeProbability >= randomNumber }
       .minBy { case (_, cumulativeProbability) => cumulativeProbability }
       ._1
+  }
+
+  def randomCardIdOfType(cardType: CardType): Card.Id = {
+    val cardIdsForType = Card.cardIds(cardType)
+    val r = random.nextInt(cardIdsForType.length)
+    cardIdsForType(r)
   }
 }

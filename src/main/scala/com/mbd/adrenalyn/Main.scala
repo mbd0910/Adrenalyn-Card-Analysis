@@ -6,6 +6,6 @@ object Main {
     println(CardTypeProbability.baseCardProbability)
     println(CardTypeProbability.cumulativeProbabilities)
 
-    
+    println(CardGenerator.randomCardId())
   }
 }
