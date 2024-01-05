@@ -144,4 +144,47 @@ class CollectionTest extends AnyFlatSpec with Matchers {
     updatedCollection.swaps.size should be(1)
     updatedCollection.swapCount should be(3)
   }
+
+  "Collection" should "handle multiple things" in {
+    val collection = Collection.empty
+    val updatedCollection = collection.addPack(
+      Pack(
+        List(
+          Card(1, "One", Some(Arsenal), BaseCard),
+          Card(2, "Two", Some(Arsenal), BaseCard),
+          Card(3, "Three", Some(Arsenal), BaseCard),
+          Card(4, "Four", Some(Arsenal), BaseCard),
+          Card(5, "Five", Some(Arsenal), BaseCard),
+          Card(6, "Six", Some(Arsenal), BaseCard),
+        )
+      )
+    ).addPack(
+      Pack(
+        List(
+          Card(1, "One", Some(Arsenal), BaseCard),
+          Card(2, "Two", Some(Arsenal), BaseCard),
+          Card(3, "Three", Some(Arsenal), BaseCard),
+          Card(4, "Four", Some(Arsenal), BaseCard),
+          Card(5, "Five", Some(Arsenal), BaseCard),
+          Card(6, "Six", Some(Arsenal), BaseCard),
+        )
+      )
+    ).addPack(
+      Pack(
+        List(
+          Card(1, "One", Some(Arsenal), BaseCard),
+          Card(2, "Two", Some(Arsenal), BaseCard),
+          Card(3, "Three", Some(Arsenal), BaseCard),
+          Card(7, "Seven", Some(Arsenal), BaseCard),
+          Card(8, "Eight", Some(Arsenal), BaseCard),
+          Card(9, "Nine", Some(Arsenal), BaseCard),
+          Card(10, "Ten", Some(Arsenal), BaseCard),
+        )
+      )
+    )
+
+    updatedCollection.singles.size should be (10)
+    updatedCollection.swaps.size should be (6)
+    updatedCollection.swapCount should be (9)
+  }
 }
