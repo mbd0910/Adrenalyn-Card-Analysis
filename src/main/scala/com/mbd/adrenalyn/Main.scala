@@ -10,16 +10,18 @@ object Main {
 
     println((1 to 468).filter(id => Card(id).id != id))
 
-//    val results = openUntilPackLimit(0, Collection.empty, 100000)
+//    val results = openUntilPackLimit(0, Collection.empty, 500)
 //    println(results)
 //    println(results.singles.size)
+//    println(results.swapCount)
+//    println(results.singles.size + results.swapCount)
 //    println(CollectionCompletionChecker.missingCards(results))
 
 //    val results = openUntilComplete(0, Collection.empty)
 //    println(results._2)
 //    println(results._1)
 
-    val results = keepSimulating(0, 20000, List.empty)
+    val results = keepSimulating(0, 10000, List.empty)
     println(results)
     println()
     println(results.max)
