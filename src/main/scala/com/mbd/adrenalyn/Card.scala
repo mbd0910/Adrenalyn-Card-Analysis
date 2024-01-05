@@ -4,8 +4,8 @@ case class Card(id: Card.Id, name: String, maybeClub: Option[Club])
 object Card {
   type Id = Int
 
-  val goldenBallerRange: IndexedSeq[Int] = 1 to 9
-  val baseCardRange: IndexedSeq[Int] = { // One row per team
+  private val goldenBallerRange: IndexedSeq[Int] = 1 to 9
+  private val baseCardRange: IndexedSeq[Int] = { // One row per team
     (11 to 26) ++
     (29 to 44) ++
     (47 to 62) ++
@@ -27,7 +27,7 @@ object Card {
     (335 to 350) ++
     (353 to 368)
   }
-  val clubCrestRange: IndexedSeq[Int] = Vector( // One row per team
+  private val clubCrestRange: IndexedSeq[Int] = Vector( // One row per team
     10,
     28,
     46,
@@ -49,7 +49,7 @@ object Card {
     334,
     352
   )
-  val lineupCardRange: IndexedSeq[Int] = Vector( // One row per team
+  private val lineupCardRange: IndexedSeq[Int] = Vector( // One row per team
     27,
     45,
     63,
@@ -71,23 +71,23 @@ object Card {
     351,
     369
   )
-  val topKeeperRange: IndexedSeq[Int] = 370 to 375
-  val aerialAceRange: IndexedSeq[Int] = 376 to 378
-  val precisionRange: IndexedSeq[Int] = 379 to 387
-  val powerHouseRange: IndexedSeq[Int] = 388 to 396
-  val colossusRange: IndexedSeq[Int] = 397 to 405
-  val fireRange: IndexedSeq[Int] = 406 to 410
-  val iceRange: IndexedSeq[Int] = 411 to 414
-  val playMakerRange: IndexedSeq[Int] = 415 to 423
-  val futureStarRange: IndexedSeq[Int] = 424 to 426
-  val adrenalynRushRange: IndexedSeq[Int] = 427 to 432
-  val nextLevelRange: IndexedSeq[Int] = 433 to 435
-  val ultraSonicRange: IndexedSeq[Int] = 436 to 441
-  val worldClassRange: IndexedSeq[Int] = 442 to 450
-  val gameChangerRange: IndexedSeq[Int] = 451 to 459
-  val dynamoRange: IndexedSeq[Int] = 460 to 461
-  val hotShotRange: IndexedSeq[Int] = 464 to 467
-  val trophyRange: IndexedSeq[Int] = Vector(468)
+  private val topKeeperRange: IndexedSeq[Int] = 370 to 375
+  private val aerialAceRange: IndexedSeq[Int] = 376 to 378
+  private val precisionRange: IndexedSeq[Int] = 379 to 387
+  private val powerHouseRange: IndexedSeq[Int] = 388 to 396
+  private val colossusRange: IndexedSeq[Int] = 397 to 405
+  private val fireRange: IndexedSeq[Int] = 406 to 410
+  private val iceRange: IndexedSeq[Int] = 411 to 414
+  private val playMakerRange: IndexedSeq[Int] = 415 to 423
+  private val futureStarRange: IndexedSeq[Int] = 424 to 426
+  private val adrenalynRushRange: IndexedSeq[Int] = 427 to 432
+  private val nextLevelRange: IndexedSeq[Int] = 433 to 435
+  private val ultraSonicRange: IndexedSeq[Int] = 436 to 441
+  private val worldClassRange: IndexedSeq[Int] = 442 to 450
+  private val gameChangerRange: IndexedSeq[Int] = 451 to 459
+  private val dynamoRange: IndexedSeq[Int] = 460 to 461
+  private val hotShotRange: IndexedSeq[Int] = 464 to 467
+  private val trophyRange: IndexedSeq[Int] = Vector(468)
 
   def cardIds(cardType: CardType): IndexedSeq[Int] = {
     cardType match {
