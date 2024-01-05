@@ -51,11 +51,12 @@ object CardTypeProbability {
   val specialCardProbability: Double = specialCardProbabilities.values.sum
   val baseCardProbability: Double = 1.0 - specialCardProbability
 
-  val cumulativeProbabilities: ListMap[CardType, Double] = specialCardProbabilities.foldLeft((ListMap[CardType, Double](BaseCard -> baseCardProbability), baseCardProbability)) {
-    case ((cumulativeMap, cumulativeProbability), (cardType, probability)) =>
-      val updatedCumulativeProbability = cumulativeProbability + probability
-      (cumulativeMap + (cardType -> updatedCumulativeProbability), updatedCumulativeProbability)
-  }._1
+  val cumulativeProbabilities: ListMap[CardType, Double] =
+    specialCardProbabilities.foldLeft((ListMap[CardType, Double](BaseCard -> baseCardProbability), baseCardProbability)) {
+      case ((cumulativeMap, cumulativeProbability), (cardType, probability)) =>
+        val updatedCumulativeProbability = cumulativeProbability + probability
+        (cumulativeMap + (cardType -> updatedCumulativeProbability), updatedCumulativeProbability)
+    }._1
 
   // Calculate binomial coefficient
   def binomialCoefficient(n: Int, k: Int): BigInt = {
@@ -69,11 +70,5 @@ object CardTypeProbability {
 
   def probabilityOfExactNumberOfCards(k: Int, probability: Double, packSize: Int): Double = {
     binomialCoefficient(packSize, k).toDouble * math.pow(probability, k) * math.pow(1 - probability, packSize - k)
-  }
-
-  def randomCardType(randomNumber: Double): CardType = {
-    cumulativeProbabilities.filter { case (_, cumulativeProbability) => cumulativeProbability > randomNumber}
-      .minBy { case (_, cumulativeProbability) => cumulativeProbability }
-      ._1
   }
 }

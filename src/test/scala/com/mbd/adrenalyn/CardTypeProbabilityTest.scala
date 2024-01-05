@@ -4,7 +4,7 @@ import org.scalatest.flatspec.AnyFlatSpec
 import org.scalatest.matchers.should.Matchers
 
 class CardTypeProbabilityTest extends AnyFlatSpec with Matchers {
-  "CardTypeProbabilityTest" should "calculate the probability of getting a card type from the per x packets value" in {
+  "CardTypeProbability" should "calculate the probability of getting a card type from the per x packets value" in {
     val probability1 = CardTypeProbability.probabilityFromPerXPacketValue(4.0/3.0)
     probability1 should be (0.125)
   }
