@@ -220,7 +220,7 @@ object Card {
       case 189 => Card(189, "Line-up card", Some(Fulham), LineupCard)
 
       // Liverpool
-      case 190 => Card(137, "Club Crest", Some(Liverpool), ClubCrest)
+      case 190 => Card(190, "Club Crest", Some(Liverpool), ClubCrest)
       case 191 => Card(191, "", Some(Liverpool), BaseCard)
       case 192 => Card(192, "", Some(Liverpool), BaseCard)
       case 193 => Card(193, "", Some(Liverpool), BaseCard)
@@ -635,7 +635,7 @@ object Card {
   private val ultraSonicRange: IndexedSeq[Int] = 436 to 441
   private val worldClassRange: IndexedSeq[Int] = 442 to 450
   private val gameChangerRange: IndexedSeq[Int] = 451 to 459
-  private val dynamoRange: IndexedSeq[Int] = 460 to 461
+  private val dynamoRange: IndexedSeq[Int] = 460 to 463
   private val hotShotRange: IndexedSeq[Int] = 464 to 467
   private val trophyRange: IndexedSeq[Int] = Vector(468)
 

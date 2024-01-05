@@ -23,6 +23,8 @@ case class Collection(singles: Map[Card.Id, Card], swaps: Map[Card.Id, List[Card
   }
 
   def swapCount: Int = swaps.values.map(_.size).sum
+
+  override def toString: String = s"${singles.values.toList.sortBy(_.id).mkString("\n")}\nSwaps: ${swaps.map(s => s"${s._1} -> ${s._2.size}").mkString("\n")}"
 }
 
 object Collection {
