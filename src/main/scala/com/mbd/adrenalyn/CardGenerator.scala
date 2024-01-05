@@ -6,8 +6,7 @@ import scala.util.Random
 object CardGenerator {
   val random = new Random()
   def getCard(): Card = {
-    val r = random.nextDouble()
-    ???
+    Card(randomCardId())
   }
 
   def randomCardId(): Card.Id = randomCardIdOfType(randomCardType())
