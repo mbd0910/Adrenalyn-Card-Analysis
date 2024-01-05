@@ -40,6 +40,10 @@
 **/.cache
 /.idea
 /.settings
+.idea/
+.idea_modules/
+*.iws
+*.iml
 
 # vscode
 /.vscode
