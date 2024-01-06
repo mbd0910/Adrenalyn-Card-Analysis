@@ -187,4 +187,46 @@ class CollectionTest extends AnyFlatSpec with Matchers {
     updatedCollection.swaps.size should be (6)
     updatedCollection.swapCount should be (9)
   }
+
+  "Collection" should "return new collection when single is added to new collection" in {
+    val collection = Collection.empty
+
+    val updatedCollection = collection.addSingle(Card(1, "One", None, BaseCard))
+    updatedCollection.singles.size should be (1)
+    updatedCollection.singles.contains(1) should be (true)
+  }
+
+  "Collection" should "return new collection when single is added to a one card collection" in {
+    val collection = Collection(
+      Map(2 -> Card(2, "Two", None, BaseCard)),
+      Map.empty
+    )
+
+    val updatedCollection = collection.addSingle(Card(1, "One", None, BaseCard))
+    updatedCollection.singles.size should be(2)
+    updatedCollection.singles.contains(1) should be(true)
+    updatedCollection.singles.contains(2) should be(true)
+  }
+
+  "Collection" should "remove swap from multiple swaps" in {
+    val collection = Collection(
+      Map(2 -> Card(2, "Two", None, BaseCard)),
+      Map(2 -> List(Card(2, "Two", None, BaseCard), Card(2, "Two", None, BaseCard)))
+    )
+
+    val updatedCollection = collection.removeSwap(2)
+    updatedCollection.swapCount should be (1)
+    updatedCollection.swaps.contains(2) should be (true)
+  }
+
+  "Collection" should "remove final swap" in {
+    val collection = Collection(
+      Map(2 -> Card(2, "Two", None, BaseCard)),
+      Map(2 -> List(Card(2, "Two", None, BaseCard)))
+    )
+
+    val updatedCollection = collection.removeSwap(2)
+    updatedCollection.swapCount should be(0)
+    updatedCollection.swaps.contains(2) should be (false)
+  }
 }

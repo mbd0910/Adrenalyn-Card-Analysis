@@ -22,6 +22,23 @@ case class Collection(singles: Map[Card.Id, Card], swaps: Map[Card.Id, List[Card
     )
   }
 
+  def addSingle(card: Card): Collection = {
+    Collection(
+      singles.updated(card.id, card),
+      swaps
+    )
+  }
+
+  def removeSwap(cardId: Card.Id): Collection = {
+    Collection(
+      singles,
+      swaps(cardId) match {
+        case _ :: Nil => swaps - cardId
+        case _ :: tail => swaps.updated(cardId, tail)
+      }
+    )
+  }
+
   def swapCount: Int = swaps.values.map(_.size).sum
 
   override def toString: String = s"${singles.values.toList.sortBy(_.id).mkString("\n")}\nSwaps: ${swaps.map(s => s"${s._1} -> ${s._2.size}").mkString("\n")}"
