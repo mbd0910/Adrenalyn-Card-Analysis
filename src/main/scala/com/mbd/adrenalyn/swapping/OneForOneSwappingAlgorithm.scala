@@ -2,6 +2,9 @@ package com.mbd.adrenalyn.swapping
 
 import com.mbd.adrenalyn.{Card, Collection}
 
+/**
+ * Each collector will swap one card for another, regardless of its rarity
+ */
 object OneForOneSwappingAlgorithm extends SwappingAlgorithm {
   override def executeSwaps(collection1: Collection, collection2: Collection): (Collection, Collection) = {
     // Find cards in collection2 swaps that aren't in collection1
@@ -19,25 +22,11 @@ object OneForOneSwappingAlgorithm extends SwappingAlgorithm {
     (collection1WithSwapsRemoved, collection2WithNewCards)
   }
 
-  def findCardsNeededInSwaps(notInCollection: Collection, areInCollection: Collection): List[Card.Id] = {
-    areInCollection.swaps.view.filterKeys(cardId => !notInCollection.singles.contains(cardId)).keys.toList
-  }
-
   def pairsToSwap(needed1: List[Card.Id], needed2: List[Card.Id]): (List[Card.Id], List[Card.Id]) = {
     val shortestSize = Math.min(needed1.size, needed2.size)
 
     (needed1.take(shortestSize), needed2.take(shortestSize))
   }
 
-  def updateCollection(
-    collectionToUpdate: Collection,
-    fromCollection: Collection,
-    cardsTaking: List[Card.Id]): (Collection, Collection) = {
-    cardsTaking.foldLeft((collectionToUpdate, fromCollection)) { case ((toUpdate, fromCollection), cardId) =>
-      (
-        toUpdate.addSingle(fromCollection.swaps(cardId).head),
-        fromCollection.removeSwap(cardId)
-      )
-    }
-  }
+
 }
