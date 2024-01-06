@@ -1,14 +1,14 @@
 package com.mbd.adrenalyn
 
+import com.mbd.adrenalyn.swapping.OneForOneSwappingAlgorithm
+
 import scala.annotation.tailrec
 
 object Main {
   def main(args: Array[String]): Unit = {
-    println(CardTypeProbability.specialCardProbability)
-    println(CardTypeProbability.baseCardProbability)
-    println(CardTypeProbability.cumulativeProbabilities)
-
-    println((1 to 468).filter(id => Card(id).id != id))
+//    println(CardTypeProbability.specialCardProbability)
+//    println(CardTypeProbability.baseCardProbability)
+//    println(CardTypeProbability.cumulativeProbabilities)
 
 //    val results = openUntilPackLimit(0, Collection.empty, 500)
 //    println(results)
@@ -17,16 +17,18 @@ object Main {
 //    println(results.singles.size + results.swapCount)
 //    println(CollectionCompletionChecker.missingCards(results))
 
-//    val results = openUntilComplete(0, Collection.empty)
-//    println(results._2)
-//    println(results._1)
+    val results = openUntilComplete(0, Collection.empty)
+    println(results._2)
+    println(results._1)
 
-    val results = keepSimulating(0, 10000, List.empty)
-    println(results)
-    println()
-    println(results.max)
-    println(results.min)
-    println(results.sum / results.size)
+//    val results = keepSimulating(0, 10000, List.empty)
+//    println(results)
+//    println()
+//    println(results.max)
+//    println(results.min)
+//    println(results.sum / results.size)
+
+
   }
 
   def keepSimulating(simulationCount: Int, simulationLimit: Int, packsOpenedList: List[Int]): List[Int] = {
